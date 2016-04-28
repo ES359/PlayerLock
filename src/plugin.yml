@@ -1,0 +1,11 @@
+name: PlayerLock
+main: me.ES359.com.PlayerLock
+version: 0.0.1
+description: Plugin allows you to restrict users from moving.
+author: __ES
+website: https://www.spigotmc.org/members/es359.40551/
+
+commands:
+  playerlock:
+    description: Main command for the plugin.
+    aliases: [lock, plock]

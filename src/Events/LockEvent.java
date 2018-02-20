@@ -19,11 +19,11 @@ import java.util.ArrayList;
 public class LockEvent extends PlayerLockUtils implements Listener
 {
 
-    PlayerLock main;
+    PlayerLock instance;
 
     public LockEvent(PlayerLock instance)
     {
-        this.main = instance;
+        this.instance = instance;
     }
 
     @EventHandler
@@ -32,11 +32,11 @@ public class LockEvent extends PlayerLockUtils implements Listener
 
         Player player = event.getPlayer();
 
-        if(main.restricted.contains(player.getUniqueId()))
+        if(instance.getRestricted().contains(player.getUniqueId()))
         {
             Debug.log(Debug.LOG + "Player has been added...");
             event.setTo(event.getFrom());
-            player.sendMessage(color(main.getConfig().getString("Inform-msg")));
+            player.sendMessage(color(instance.getConfig().getString("Inform-msg")));
         }
     }
 
@@ -48,25 +48,23 @@ public class LockEvent extends PlayerLockUtils implements Listener
 
         displayAuthInfo(p);
 
-        if(main.getConfig().getBoolean("Lock-API"))
-       {
-
-
+        if(instance.getConfig().getBoolean("Lock-API"))
+        {
            //TODO implement informer message.
 
-           if(!p.hasPermission(PlayerLockPermmissions.RESTRICT_BYPASS_PERM))
+           if(!p.hasPermission(PlayerLockPermmissions.RESTRICT_BYPASS_PERM) && !(p.isOp()) && (instance.getConfig().getBoolean("ignore-ops")))
            {
 
-               if(!main.restricted.contains(p.getUniqueId()))
+               if(!instance.getRestricted().contains(p.getUniqueId()))
                {
                    Debug.log(Debug.LOG + "Player has been added. ");
-                   main.restricted.add(p.getUniqueId());
-                   p.sendMessage(color(main.getConfig().getString("Restrict-msg")));
+                   instance.getRestricted().add(p.getUniqueId());
+                   p.sendMessage(color(instance.getConfig().getString("Restrict-msg")));
                }
            }
        }else
        {
-           main.restricted.remove(p.getUniqueId());
+           instance.getRestricted().remove(p.getUniqueId());
            Debug.log(Debug.ACTION + "This should be called if the lock API is false..");
        }
     }

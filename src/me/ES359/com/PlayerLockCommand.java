@@ -66,13 +66,13 @@ public class PlayerLockCommand extends PlayerLockUtils implements CommandExecuto
                             sender.sendMessage(color("&b&l! >> &7Error, cannot find that player: &b" + args[0]));
                         }else
                         {
-                            if(!main.restricted.contains(target.getUniqueId()))
+                            if(!main.getRestricted().contains(target.getUniqueId()))
                             {
                                 String conf = this.main.getConfig().getString("Admin-lock-msg");
 
                                 conf = conf.replace("%user%",target.getName());
 
-                                main.restricted.add(target.getUniqueId());
+                                main.getRestricted().add(target.getUniqueId());
 
                                 sender.sendMessage(color(conf));
                                 target.sendMessage(color(main.getConfig().getString("User-lock-msg")));
@@ -82,7 +82,7 @@ public class PlayerLockCommand extends PlayerLockUtils implements CommandExecuto
 
                                 conf = conf.replace("%user%",target.getName());
 
-                                main.restricted.remove(target.getUniqueId());
+                                main.getRestricted().remove(target.getUniqueId());
                                 sender.sendMessage(color(conf));
                                 target.sendMessage(color(main.getConfig().getString("User-unlock-msg")));
                             }

@@ -5,6 +5,7 @@ Admin-lock-msg: "&a&l! >> &7The user, &a&n%user% &r &7has been locked."
 User-lock-msg: "&a&l! >> &7You have been &a&nLocked&r &7 by an Admin!"
 Admin-unlock-msg: "&a&l! >> &7The user, &a&n%user% &r &7has been unlocked."
 User-unlock-msg: "&a&l! >> &7You have been &a&nunlocked&r &7an Admin!"
+ignore-ops: false
 Lock-API: true
 Lock-API-off: "&a&l! >> %prefix% &7on user join is &cdisabled!"
 Lock-API-on: "&a&l! >> %prefix% &7on user join is &aenabled!"

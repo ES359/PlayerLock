@@ -17,7 +17,7 @@ public class PlayerLock extends JavaPlugin {
 
     public PluginDescriptionFile pdfFile = this.getDescription();
 
-    public ArrayList<UUID> restricted = new ArrayList<>();
+    private ArrayList<UUID> restricted = new ArrayList<>();
 
 
     public void onEnable()
@@ -34,6 +34,10 @@ public class PlayerLock extends JavaPlugin {
     {
         this.getConfig().options().copyDefaults(true);
         saveConfig();
+    }
+
+    public ArrayList<UUID> getRestricted() {
+        return restricted;
     }
 
     static public boolean DEBUG = false;
